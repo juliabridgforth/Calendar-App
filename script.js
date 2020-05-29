@@ -20,7 +20,7 @@ console.log(currentHour);
 //Create an array of the hours
 //Create an array of times
 
-timeBlockHours = [9,10,11,12,13,14,15,16,17];
+timeBlockHours = [09,10,11,12,13,14,15,16,17];
 timeBlockTimes = ["9AM","10AM","11AM","12AM","1PM","2PM","3PM","4PM","5PM"];
 
 //Code a for loop that will render the timeblocks onto the page
@@ -54,17 +54,21 @@ for (i=0; i<timeBlockHours.length; i++) {
 //Create code that will check current time against timeBlockHour//convert 
 for (i=0; i<timeBlockHours.length; i++) {
 
-hourData = $(".time-block").attr("data-number");
-console.log($(".time-block").attr("data-number"));
+var specificBlock = $("#hour-"+timeBlockHours[i]);
+var hourData = specificBlock.attr("data-number");
+console.log($("#hour-"+timeBlockHours[i]).attr("data-number"));
 
-if (hourData > currentHour) {
-    $(".time-block").css("background-color", "grey");
+console.log($("#hour-"+timeBlockHours[0]))
+
+
+if (hourData < currentHour) {
+    specificBlock.css("background-color", "#B4BBBB");
 }
-else if (hourData < currentHour) {
-    $(".time-block").css("background-color", "red");
+else if (hourData > currentHour) {
+    specificBlock.css("background-color", "#AEEF95");
 }
-else {
-    $(".time-block").css("background-color", "green");
+else if  (hourData = currentHour) {
+    specificBlock.css("background-color", "#FF8370");
 
 }
 }
