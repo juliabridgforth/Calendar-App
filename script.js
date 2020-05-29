@@ -1,6 +1,11 @@
+$(document).ready(function(){
+
+    
 //Adding the current day to the top of the page
 var currentDayEl = $("#currentDay");
 var today = moment().format('LL');
+currentDayEl.append(today);
+
 
 //Create a currentTime variable
 //Create a currentHour variable to check against the time-block hour
@@ -8,8 +13,9 @@ var today = moment().format('LL');
 var currentTime = moment().format('LT');
 console.log(currentTime);
 
-var currentHour = moment().format('h');
-console.log(moment().format('h'));
+var currentHour = moment().format('HH');
+console.log("Current Hour:" + moment().format('HH'));
+console.log(currentHour);
 
 //Create an array of the hours
 //Create an array of times
@@ -23,6 +29,7 @@ for (i=0; i<timeBlockHours.length; i++) {
     var timeBlock = $("<div>");
     timeBlock.attr("id", "hour-" + timeBlockHours[i]);
     timeBlock.attr("class", "row time-block");
+    timeBlock.attr("data-number", timeBlockHours[i]);
     $(".container").append(timeBlock);
 
     var hourBlock = $("<div>");
@@ -36,18 +43,47 @@ for (i=0; i<timeBlockHours.length; i++) {
 
     var saveButton = $("<button>");
     saveButton.attr("class", "btn saveBtn col-1");
-    saveButton.attr();
     timeBlock.append(saveButton);
+
+    var saveIcon = $("<icon>");
+    saveIcon.attr("class", "fa fa-unlock");
+    saveButton.append(saveIcon);
 
 }
 
-//Create code that will check current time against timeBlockHour
+//Create code that will check current time against timeBlockHour//convert 
+for (i=0; i<timeBlockHours.length; i++) {
+
+hourData = $(".time-block").attr("data-number");
+console.log($(".time-block").attr("data-number"));
+
+if (hourData > currentHour) {
+    $(".time-block").css("background-color", "grey");
+}
+else if (hourData < currentHour) {
+    $(".time-block").css("background-color", "red");
+}
+else {
+    $(".time-block").css("background-color", "green");
+
+}
+}
 
 //if currentTime<timeBlockHour: future;
 //if currentTime=timeBlockHour: presenet;
 //if currentTime>timeBlockHour: past;
 
-//Create code that will save the text input when you click the button
-//Create code that will animate the button from unlocked to locked
+//Create on "click" event that will change lock icon and save text
 
+$(".saveBtn").on("click", function() {
+    var buttonState = $(this).children().attr("class");
 
+    if(buttonState==="fa fa-lock") {
+        $(this).children().attr("class", "fa fa-unlock")
+    }
+    else {
+        $(this).children().attr("class", "fa fa-lock")
+    }
+
+});
+})
