@@ -77,7 +77,7 @@ $(document).ready(function () {
                 saveButton.append(saveIcon);
             }
                 
-            } 
+     
             else {
                 var saveIcon = $("<icon>");
                 saveIcon.attr("class", "fa fa-unlock");                
