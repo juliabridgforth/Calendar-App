@@ -71,8 +71,7 @@ $(document).ready(function () {
             saveButton.attr("data-time", timeBlockTimes[i]);
             timeBlock.append(saveButton);
 
-            if (plansFromStorage){
-            if (plansFromStorage[timeBlockTimes[i]]) {
+            if(plansFromStorage && plansFromStorage[timeBlockTimes[i]]) {
                 var saveIcon = $("<icon>");
                 saveIcon.attr("class", "fa fa-lock");
                 saveButton.append(saveIcon);
