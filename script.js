@@ -59,7 +59,9 @@ $(document).ready(function () {
             textArea.attr("class", "col-md-10 description");
             textArea.attr("id", "input-" + index);
             //console.log("console!!" + plansFromStorage[timeBlockTimes[i]]);
+            if (plansFromStorage) {
             textArea.text(plansFromStorage[timeBlockTimes[i]]);
+            }
             timeBlock.append(textArea);
     
             var saveButton = $("<button>");
